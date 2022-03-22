@@ -9,7 +9,6 @@ import (
 	"time"
 
 	"github.com/libp2p/go-libp2p"
-	relay "github.com/libp2p/go-libp2p-circuit"
 	connmgr "github.com/libp2p/go-libp2p-connmgr"
 	"github.com/libp2p/go-libp2p-core/crypto"
 	"github.com/libp2p/go-libp2p-core/host"
@@ -156,9 +155,8 @@ func loadUserPrivKey() (priv crypto.PrivKey, err error) {
 func createLibp2pHost(ctx context.Context, priv crypto.PrivKey) (host.Host, error) {
 	var d *dht.IpfsDHT
 
-	h, err := libp2p.NewWithoutDefaults(ctx,
+	h, err := libp2p.NewWithoutDefaults(
 		libp2p.Identity(priv),
-
 		libp2p.ListenAddrStrings(
 			"/ip4/0.0.0.0/udp/0/quic",
 			"/ip6/::/udp/0/quic",
@@ -190,7 +188,7 @@ func createLibp2pHost(ctx context.Context, priv crypto.PrivKey) (host.Host, erro
 		libp2p.EnableNATService(),
 
 		libp2p.EnableAutoRelay(),
-		libp2p.EnableRelay(relay.OptActive),
+		libp2p.EnableRelay(),
 		libp2p.DefaultStaticRelays(),
 
 		libp2p.DefaultPeerstore,

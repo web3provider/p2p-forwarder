@@ -71,7 +71,7 @@ var (
 
 // Connect starts forwarding connections to `listenip`:`PORT` to passed id`:`PORT`
 func (f *Forwarder) Connect(id string) (listenip string, cancel context.CancelFunc, err error) {
-	peerid, err := peer.IDB58Decode(id)
+	peerid, err := peer.Decode(id)
 	if err != nil {
 		return "", nil, err
 	}

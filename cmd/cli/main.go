@@ -11,7 +11,7 @@ import (
 	"syscall"
 	"unicode"
 
-	p2pforwarder "github.com/nickname32/p2p-forwarder"
+	p2pforwarder "github.com/web3provider/p2p-forwarder"
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
 )
